@@ -3,7 +3,6 @@
         <title>J&Auml;RKILOPPUU</title>
         <meta charset="utf-8">
         <link rel="stylesheet" type="text/css" href="style.css">
-
             <!-- Materialize -->
             <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
             <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -14,10 +13,23 @@
         <div class="container">
         <div class="row">
             <div class="col s12 card" style="padding: 0">
-                <span class="card-title blue white-text" style="display: inline-block; width: 100%; padding: 1em; padding-top: .5em; padding-bottom: .5em">
-                    Lukujärjestys
-                    <span class="left-align white-text">9:37</span>
-                </span>
+                <div class="card-title blue white-text row" style="display: inline-flex; width: 100%; padding: .5em; padding-top: .5em; padding-bottom: .5em; margin: 0">
+                    <div class="col s11">Lukujärjestys</div>
+                    <div class="col s1 white-text" id="clock">9:37</div>
+                    <script>
+                        $(document).ready(function() {
+                            var kello = $("#clock");
+                            function päivitä(){
+                                var nyt = new Date();
+                                var tunti = nyt.getHours(), minuutti = nyt.getMinutes();
+                                kello.text(tunti + ":" + minuutti);
+                                setTimeout(päivitä, 1000);
+                            }
+
+                            setTimeout(päivitä, 1000);
+                        });
+                    </script>
+                </div>
                 <div class="card-content">
                     <table>
                         <thead>
